@@ -1,4 +1,5 @@
-class ConversationsController < ApplicationController
+module Api
+  class ConversationsController < ApplicationController
 
   before_action :authenticate
 
@@ -22,4 +23,5 @@ class ConversationsController < ApplicationController
     def conversation_params
       params.permit(:sender_id, :receiver_id)
     end
+  end
 end

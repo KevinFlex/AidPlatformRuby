@@ -1,4 +1,5 @@
-class MessagesController < ApplicationController
+module Api
+  class MessagesController < ApplicationController
 
   before_action :authenticate
 
@@ -28,6 +29,7 @@ class MessagesController < ApplicationController
     def message_params
       params.require(:message).permit(:body, :user_id)
     end
+  end
 
 end
 

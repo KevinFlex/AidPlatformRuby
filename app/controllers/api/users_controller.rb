@@ -1,6 +1,9 @@
-class UsersController < ApplicationController
+module Api
+
+  class UsersController < ApplicationController
 
     before_action :authorized, only: [:auto_login]
+
 
     def index
       @users = User.all
@@ -20,7 +23,7 @@ class UsersController < ApplicationController
         token = encode_token({user_id: @user.id})
         render json: {user: @user, token: token}
       else
-        render json: {error: "Invalid username or password"}
+        render json: {error: "Invalid username, mail or format file"}
       end
     end
 
@@ -35,7 +38,7 @@ class UsersController < ApplicationController
   
     # LOGGING IN
     def login
-      @user = User.find_by(firstName: params[:firstName])
+      @user = User.find_by(mail: params[:mail])
   
       if @user && @user.authenticate(params[:password])
         token = encode_token({user_id: @user.id})
@@ -57,7 +60,8 @@ class UsersController < ApplicationController
     private
   
     def user_params
-      params.permit(:firstName, :lastName, :password, :mail)
+      params.permit(:firstName, :lastName, :password, :mail, :file)
     end
 
+  end
 end
