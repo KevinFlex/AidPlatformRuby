@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'requests/index'
+  get 'requests/new'
+  get 'requests/show'
+  get 'requests/create'
+  get 'requests/update'
+  get 'requests/destroy'
+  get 'requests/search'
   namespace :api do
 
 

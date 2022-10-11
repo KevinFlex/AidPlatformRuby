@@ -2,16 +2,18 @@
 
 one:
   title: MyString
-  description: MyString
   type: 
   lat: 1.5
   long: 1.5
-  timeUpdated: 2022-08-23 22:05:31
+  description: MyString
+  isactive: false
+  enddate: 2022-10-11 18:45:29
 
 two:
   title: MyString
-  description: MyString
   type: 
   lat: 1.5
   long: 1.5
-  timeUpdated: 2022-08-23 22:05:31
+  description: MyString
+  isactive: false
+  enddate: 2022-10-11 18:45:29
