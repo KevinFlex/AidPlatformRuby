@@ -1,7 +1,6 @@
-class CreateRequests < ActiveRecord::Migration[7.0]
+class DropRequests < ActiveRecord::Migration[7.0]
   def change
-    drop_table :requests
-    create_table :requests do |t|
+    drop_table :requests do |t|
       t.string :title
       t.string :type
       t.float :lat
@@ -9,6 +8,7 @@ class CreateRequests < ActiveRecord::Migration[7.0]
       t.string :description
       t.boolean :isactive
       t.datetime :enddate
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end
