@@ -1,7 +1,7 @@
 module Api
     class RequestsController < ApplicationController
-        before_action :authenticate_user!
-        
+        before_action :authorized
+                
         def index 
             @requests = Request.all
             render json @request
@@ -13,7 +13,8 @@ module Api
         end
 
         def create
-            @request = Request.create(title: request_params[:title], description: request_params[:description], type: request_params[:type], lat: request_params[:lat], long: request_params[:long], user: current_user)
+            puts logged_in_user
+            @request = Request.create(title: request_params[:title], description: request_params[:description], type: request_params[:type], lat: request_params[:lat], long: request_params[:long], user: logged_in_user)
             render json @request
 
         end
@@ -31,7 +32,7 @@ module Api
         private
   
         def request_params
-          params.require(:request).permit(:type, :lat, :long, :title, :description, :isactive, :endate)
+          params.permit(:type, :lat, :long, :title, :description)
         end
 
 

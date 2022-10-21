@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
   namespace :api do
-    get 'requests/index'
-    get 'requests/new'
-    get 'requests/show'
-    get 'requests/create'
-    get 'requests/update'
-    get 'requests/destroy'
-    get 'requests/search'
+
+  resources :requests
+  # post "/request", to: "requests/create"
+
 
   get 'messages/index'
   get 'conversations/index'

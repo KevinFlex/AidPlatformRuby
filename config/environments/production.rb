@@ -55,6 +55,8 @@ Rails.application.configure do
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
 
+  #Is that request that I modified (RequestTable from an existing config RailsTable)
+
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 

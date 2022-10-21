@@ -49,6 +49,11 @@ module Api
     end
 
     def destroy
+      @requests = Request.where(user_id: @user.id)
+      @requests.each do |request|
+        request.destroy
+
+      end
       @user.destroy
     end
   
