@@ -1,7 +1,7 @@
 module Api
   class MessagesController < ApplicationController
 
-  before_action :authenticate
+  before_action :authorized
 
   before_action do
     @conversation = Conversation.find(params[:conversation_id])
@@ -11,23 +11,23 @@ module Api
 
     @messages = @conversation.messages
 
-    @messages.where("user_id != ? AND read = ?", current_user.id, false).update_all(read: true)
+    @messages.where("user_id != ? AND read = ?", logged_in_user.id, false).update_all(read: true)
 
-    @message = @conversation.messages.new
+    render json: @messages
   end
 
   def create
     @message = @conversation.messages.new(message_params)
-    @message.user = current_user
+    @message.user = logged_in_user
 
     if @message.save
-      redirect_to conversation_messages_path(@conversation)
+    render json: @message
     end
   end
 
   private
     def message_params
-      params.require(:message).permit(:body, :user_id)
+      params.permit(:body, :user_id)
     end
   end
 

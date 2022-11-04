@@ -9,19 +9,22 @@ module Api
 
   end
 
+
   def create
+   @conversation_number = Conversation.where(request_id: params[:request_id]).count
+   if @conversation_number<5
     if Conversation.between(params[:sender_id], params[:receiver_id]).present?
       @conversation = Conversation.between(params[:sender_id], params[:receiver_id]).first
     else
       @conversation = Conversation.create!(conversation_params)
     end
-
-    redirect_to conversation_messages_path(@conversation)
+    render json: @conversation
+  end
   end
 
   private
     def conversation_params
-      params.permit(:sender_id, :receiver_id)
+      params.permit(:sender_id, :receiver_id, :request_id)
     end
   end
 end

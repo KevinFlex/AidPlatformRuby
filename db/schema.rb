@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_21_132311) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_26_125245) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -40,12 +40,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_21_132311) do
   end
 
   create_table "conversations", force: :cascade do |t|
-    t.integer "sender_id"
-    t.integer "receiver_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "request_id", null: false
+    t.integer "sender_id", null: false
+    t.integer "receiver_id", null: false
+    t.index ["receiver_id"], name: "index_conversations_on_receiver_id"
     t.index ["request_id"], name: "index_conversations_on_request_id"
+    t.index ["sender_id"], name: "index_conversations_on_sender_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -65,7 +67,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_21_132311) do
     t.string "need"
     t.float "lat"
     t.float "long"
-    t.boolean "isactive"
+    t.boolean "isactive", default: true
     t.datetime "endate", precision: nil
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
@@ -84,7 +86,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_21_132311) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "conversations", "users", column: "receiver_id"
   add_foreign_key "conversations", "users", column: "request_id"
+  add_foreign_key "conversations", "users", column: "sender_id"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
   add_foreign_key "requests", "users"
