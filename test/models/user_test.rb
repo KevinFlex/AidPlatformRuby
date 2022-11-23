@@ -1,9 +1,9 @@
 require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
-  test "should not save user without id s file" do
+  test "New User" do
     user = User.new
-    assert_not user.save
+    assert_response :success
   end
   
 end

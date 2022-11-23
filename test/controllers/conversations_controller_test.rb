@@ -1,8 +1,12 @@
 require "test_helper"
 
 class ConversationsControllerTest < ActionDispatch::IntegrationTest
+
   test "should get index" do
-    get conversations_index_url
+token = JWT.encode({ user_id: users(:one).id })
+
+get "/api/conversations", headers: { 'Authorization' => 'Bearer ' + token }
+
     assert_response :success
   end
 end

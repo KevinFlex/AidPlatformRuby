@@ -1,6 +1,6 @@
 module Api
     class RequestsController < ApplicationController
-        before_action :authorized
+        before_action :authorized, except: [:index]
                 
         def index 
             @requests = Request.all
@@ -24,7 +24,7 @@ module Api
         def update
             @request = Request.find(params[:id])
 
-            if @request.isactive === false
+            if @request.isactive == false
              checkrepublished
             else
                 @request.update request_params
@@ -39,8 +39,9 @@ module Api
         end
 
         def checkrepublished
-            if @request.isrepublished === true
+            if @request.isrepublished == true
                 @request.update(endate: DateTime.now, isactive: true)
+                render json: @request
             else
                 render json: { error: 'Request is outdated' }, status: :unprocessable_entity
             end

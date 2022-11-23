@@ -1,21 +1,34 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  type: 
-  lat: 1.5
-  long: 1.5
+  title: Garden
+  need: One Time
+  lat: 48.3905283
+  long: -4.4860088
   description: MyString
-  isactive: false
-  enddate: 2022-10-14 10:16:34
-  user: one
+  isactive: true
+  endate: 2022-10-14 10:16:34
+  fullifiled: false
+  user_id: 1
 
 two:
-  title: MyString
-  type: 
-  lat: 1.5
-  long: 1.5
+  title: HouseKeeping
+  need: One Time
+  lat: 48.347269
+  long: -4.412538
   description: MyString
-  isactive: false
-  enddate: 2022-10-14 10:16:34
-  user: two
+  isactive: true
+  endate: 2022-10-14 10:16:34
+  fullifiled: false
+  user_id: david
+
+three:
+  title: Winter Material
+  need: Material
+  lat: 48.391098
+  long: -4.274865
+  description: MyString
+  isactive: true
+  endate: 2022-10-14 10:16:34
+  fullifiled: false
+  user_id: tom
