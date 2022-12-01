@@ -33,4 +33,3 @@ module Api
       params.permit(:sender_id, :receiver_id, :request_id)
     end
   end
-end

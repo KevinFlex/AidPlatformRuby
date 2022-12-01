@@ -1,20 +1,20 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-david:
+one:
   id: 1
   firstName: MyString
   lastName: MyString
   mail: MyString
   
 
-lucas:
+two:
   id: 2
   firstName: MyString
   lastName: MyString
   mail: MyString
 
 
-tom:
+three:
   id: 3
   firstName: MyString
   lastName: MyString

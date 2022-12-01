@@ -1,8 +1,8 @@
 module Api
     class RequestsController < ApplicationController
         before_action :authorized, except: [:index]
-                
-        def index 
+
+        def index
             @requests = Request.all
             render json: @requests
         end
@@ -14,9 +14,10 @@ module Api
 
         def create
 
-            puts request_params
+            # puts request_params
 
             @request = Request.create(title: request_params[:title], description: request_params[:description], need: request_params[:need], lat: request_params[:lat], long: request_params[:long], user: logged_in_user)
+        
             render json: @request
 
         end
@@ -30,7 +31,6 @@ module Api
                 @request.update request_params
                 render json: @request
             end
-        end
         end
 
         def destroy
@@ -47,10 +47,13 @@ module Api
             end
        end
 
-    private
-   
-     def request_params
-       params.permit(:need, :lat, :long, :title, :description, :fullifiled, :isactive, :isrepublished, :endate)
-     end
 
+
+
+    private
+    def request_params
+        params.permit(:need, :lat, :long, :title, :description, :fullifiled, :isactive, :isrepublished, :endate)
+      end
+
+    end
 end

@@ -33,7 +33,7 @@ class ApplicationController < ActionController::API
   
     def logged_in?
       !!logged_in_user
-    #   returns true if logged in
+      # returns true if logged_in
     end
   
     def authorized
