@@ -3,3 +3,5 @@ require_relative "application"
 
 # Initialize the Rails application.
 Rails.application.initialize!
+
+RAILS_GEM_VERSION = '= 2.7.3'

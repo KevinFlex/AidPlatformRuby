@@ -27,6 +27,6 @@ test:
 
 production:
   <<: *default
-  database: <%= ENV['DBURI'] %>
+  database: aidplatform
 
   # ['DBURI'] will be my Heroku config vars !!
